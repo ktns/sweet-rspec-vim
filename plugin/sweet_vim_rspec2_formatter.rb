@@ -15,7 +15,7 @@ module RSpec
             frame =~ %r{\bspec/.*_spec\.rb:\d+\z}
           end + ": in `#{example.description}'\n" rescue nil
 
-          data << exception.message
+          data << exception.message.gsub(/^\s*#/, '')
           data << "\n+-+ Backtrace\n"
           data << exception.backtrace.join("\n")
           data << "\n-+-\n" * 2
